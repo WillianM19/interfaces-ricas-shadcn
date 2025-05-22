@@ -79,7 +79,7 @@ export default function TaskForm() {
               <FormLabel>Categoria</FormLabel>
               <FormControl>
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Categoria da postagem" />
                   </SelectTrigger>
                   <SelectContent>
@@ -96,7 +96,7 @@ export default function TaskForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Criar Post</Button>
+        <Button type="submit" className="w-full cursor-pointer">Criar Post</Button>
       </form>
     </Form>
   );
