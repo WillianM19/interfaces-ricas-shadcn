@@ -5,36 +5,37 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-type FormData = {
+export type PostFormData = {
   titulo: string;
   descricao: string;
   categoria: string;
 }
 
-export default function TaskForm() {
+type TaskFormProps = {
+  defaultValues?: PostFormData;
+  onSubmit: (data: PostFormData) => void;
+}
 
-  const form = useForm<FormData>({
+export default function TaskForm({ defaultValues, onSubmit }: TaskFormProps) {
+
+  const form = useForm<PostFormData>({
     defaultValues: {
-      titulo: "",
-      descricao: "",
-      categoria: "",
+      titulo: defaultValues?.titulo || "",
+      descricao: defaultValues?.descricao ||"",
+      categoria: defaultValues?.categoria || "",
     },
   });
 
-  function onSubmit(data: FormData) {
-    const existingPosts = JSON.parse(localStorage.getItem("posts") || "[]");
-    const newId = existingPosts.length + 1;
-    const newPost = { 
-      id: newId,
-      titulo: data.titulo,
-      descricao: data.descricao,
-      categoria: data.categoria,
-    };
-    const updatePosts = [...existingPosts, newPost];
-    localStorage.setItem("posts", JSON.stringify(updatePosts));
-  }
+  useEffect(() => {
+    form.reset({
+      titulo: defaultValues?.titulo || "",
+      descricao: defaultValues?.descricao || "",
+      categoria: defaultValues?.categoria || "",
+    })
+  }, [defaultValues, form]);
 
   return (
     <Form {...form}>
