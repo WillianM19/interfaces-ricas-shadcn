@@ -24,7 +24,16 @@ export default function TaskForm() {
   });
 
   function onSubmit(data: FormData) {
-    console.log(data);
+    const existingPosts = JSON.parse(localStorage.getItem("posts") || "[]");
+    const newId = existingPosts.length + 1;
+    const newPost = { 
+      id: newId,
+      titulo: data.titulo,
+      descricao: data.descricao,
+      categoria: data.categoria,
+    };
+    const updatePosts = [...existingPosts, newPost];
+    localStorage.setItem("posts", JSON.stringify(updatePosts));
   }
 
   return (
