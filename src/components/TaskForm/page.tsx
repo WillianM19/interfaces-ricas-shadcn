@@ -30,6 +30,7 @@ export default function TaskForm({ defaultValues, onSubmit }: TaskFormProps) {
   });
 
   useEffect(() => {
+    console.log("defaultValues changed:", defaultValues);
     form.reset({
       titulo: defaultValues?.titulo || "",
       descricao: defaultValues?.descricao || "",
@@ -79,7 +80,7 @@ export default function TaskForm({ defaultValues, onSubmit }: TaskFormProps) {
             <FormItem>
               <FormLabel>Categoria</FormLabel>
               <FormControl>
-                <Select value={field.value} onValueChange={field.onChange}>
+                <Select key={field.value} value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Categoria da postagem" />
                   </SelectTrigger>
