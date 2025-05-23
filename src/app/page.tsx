@@ -74,12 +74,11 @@ export default function Home() {
                     {post.categoria.charAt(0).toUpperCase() + post.categoria.slice(1)}
                   </Badge>
                 </div>
-                <CardDescription className="line-clamp-2 mt-2">{post.descricao}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-sm text-muted-foreground">
-                  {post.descricao.length > 150 ? post.descricao.substring(0, 150) + "..." : post.descricao}
-                </p>
+                <CardDescription className="line-clamp-2 mt-2">
+                  {post.descricao}
+                </CardDescription>
               </CardContent>
               <Separator />
               <CardFooter className="flex justify-between pt-4">
