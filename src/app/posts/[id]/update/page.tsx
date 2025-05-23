@@ -6,11 +6,11 @@ import { PencilLine } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-
 export default function Update() {
     const { id } = useParams();
     const postId = Number(id);
     const [ defaultValues, setDefaultValues ] = useState<PostFormData>();
+
 
     useEffect(() => {
         const existingPost = JSON.parse(localStorage.getItem("posts") || "[]");
@@ -33,6 +33,8 @@ export default function Update() {
             return p;
         });
         localStorage.setItem("posts", JSON.stringify(updatePosts));
+
+        window.open(`/`, "_self");
     }
 
   return (

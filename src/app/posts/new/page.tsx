@@ -11,6 +11,8 @@ export default function New() {
     const newId = existingPosts.length + 1;
     const newPost = { id: newId, ...data };
     localStorage.setItem("posts", JSON.stringify([...existingPosts, newPost]));
+
+    window.open(`/`, "_self");
   }
 
   return (
