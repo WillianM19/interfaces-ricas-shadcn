@@ -47,8 +47,8 @@ export default function Home() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Blog - Publicações</h1>
         <Button asChild>
-          <Link href="/posts/new">
-            <Plus className="mr-2 h-4 w-4" /> Criar Post
+          <Link href="/posts/new" className="mr-4">
+            <Plus className="h-4 w-4" /> Criar Post
           </Link>
         </Button>
       </div>
